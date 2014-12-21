@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <bean id="exporter" class="org.springframework.jmx.export.MBeanExporter" lazy-init="false">
+              <property name="beans">
+                     <map>
+                            <entry key="bean:name=jyotu" value-ref="jyotuWebService"/>
+                     </map>
+              </property>
+              <property name="assembler">
+                     <bean class="org.springframework.jmx.export.assembler.InterfaceBasedMBeanInfoAssembler">
+                            <property name="managedInterfaces">
+                                   <value>org.springframework.jmx.IJmxTestBean</value>
+                            </property>
+                     </bean>
+              </property>
+       </bean>
+
+</bean>
+
+</beans>
